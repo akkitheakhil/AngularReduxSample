@@ -1,0 +1,105 @@
+<div class="container-md">
+  <div class="content">
+    <h1 class="content-title font-size-22">
+      <!-- font-size-22 = font-size: 2.2rem (22px) -->
+      Angular Redux Sample
+    </h1>
+  </div>
+
+  <input
+    [(ngModel)]="searchKeyword"
+    type="text"
+    class="form-control form-control-sm"
+    placeholder="Search"
+    (keyup)="search()"
+  />
+
+  <div class="my-10 m-sm-20">
+    <div class="row">
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
+        <a href="#modal-2" class="btn btn-block" role="button">ADD POST</a>
+      </div>
+      <div class="col-md-3"></div>
+    </div>
+  </div>
+
+  <ng-container *ngIf="!isSearching; else searchBlock">
+    <div *ngIf="getAllPost$ | async as postData; else loadingState" class="center">
+      <ng-container *ngFor="let item of postData">
+        <div class="w-400 mw-full">
+          <div class="card">
+            <h2 class="card-title">{{ item?.name }}</h2>
+            <p class="text-muted">
+              {{ item?.comment }}
+            </p>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+
+ <ng-template #loadingState>
+  <h1 class="font-size-22">Loading....</h1>
+ </ng-template>
+
+  </ng-container>
+
+  <ng-template #searchBlock>
+    <div *ngIf="searchPost$ | async as postData" class="center">
+      <ng-container *ngFor="let item of postData">
+        <div class="w-400 mw-full">
+          <div class="card">
+            <h2 class="card-title">{{ item?.name }}</h2>
+            <p class="text-muted">
+              {{ item?.comment }}
+            </p>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </ng-template>
+</div>
+
+<div class="modal" id="modal-2" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <a href="#" class="btn close" role="button" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </a>
+      <h5 class="modal-title">Add New Post</h5>
+      <form action="..." method="...">
+        <div class="form-group">
+          <label for="username" class="required">Username</label>
+          <input
+            name="Username"
+            type="text"
+            id="username"
+            class="form-control"
+            placeholder="Username"
+            required="required"
+            [(ngModel)]="username"
+          />
+        </div>
+        <div class="form-group">
+          <label for="password" class="required">Comment</label>
+          <!-- <input type="text" class="form-control" placeholder="Comment" required="required"> -->
+          <textarea
+            name="Comments"
+            class="form-control form-control-sm"
+            placeholder="Comments"
+            required="required"
+            [(ngModel)]="comment"
+          ></textarea>
+        </div>
+        <button
+          class="btn btn-primary btn-block"
+          value="Post"
+          (click)="save()"
+          type="submit"
+        >
+          POST
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

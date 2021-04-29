@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'angular-redux-sample';
+
+  title = 'Angular Redux Sample';
+
+  constructor() {}
 }
