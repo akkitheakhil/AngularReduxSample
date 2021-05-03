@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { isEmpty } from 'src/utils/common.utils';
+import { isEmpty } from 'src/app/utils/common.utils';
 import { PostDto } from '../../models/post.model';
 import { PostFacadeService } from './post-facade.service';
 

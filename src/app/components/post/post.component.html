@@ -25,24 +25,30 @@
   </div>
 
   <ng-container *ngIf="!isSearching; else searchBlock">
-    <div *ngIf="getAllPost$ | async as postData; else loadingState" class="center">
-      <ng-container *ngFor="let item of postData">
-        <div class="w-400 mw-full">
-          <div class="card">
-            <h2 class="card-title">{{ item?.name }}</h2>
-            <p class="text-muted">
-              {{ item?.comment }}
-            </p>
+    <div *ngIf="getAllPost$ | async as postData; else showLoading" class="center">
+      <ng-container *ngIf="!(postData | isEmpty); else noPostToShow">
+        <ng-container *ngFor="let item of postData">
+          <div class="w-400 mw-full">
+            <div class="card">
+              <h2 class="card-title">{{ item?.name }}</h2>
+              <p class="text-muted">
+                {{ item?.comment }}
+              </p>
+            </div>
           </div>
-        </div>
+        </ng-container>
       </ng-container>
+
+      <ng-template #noPostToShow>
+        <h1 class="font-size-22">No post content to show</h1>
+      </ng-template>
     </div>
-
- <ng-template #loadingState>
-  <h1 class="font-size-22">Loading....</h1>
- </ng-template>
-
+    <ng-template #showLoading class="center">
+      <h1 class="font-size-22">Loading...</h1>
+    </ng-template>
   </ng-container>
+
+
 
   <ng-template #searchBlock>
     <div *ngIf="searchPost$ | async as postData" class="center">

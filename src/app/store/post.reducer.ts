@@ -5,8 +5,8 @@ import * as PostActions from '../store/post.actions'
 export const postFeatureKey = 'post';
 
 export const initialState: PostState = {
-  post: [],
-  search: []
+  post: null,
+  search: null
 };
 
 export const reducer = createReducer(

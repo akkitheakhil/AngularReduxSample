@@ -5,7 +5,7 @@ import { selectAllPost, selectSeachPost } from '../../store/post.selectors';
 import * as PostActions from '../../store/post.actions'
 import { map } from 'rxjs/operators';
 import { PostDto, PostResponse } from '../../models/post.model';
-import { isEmpty } from 'src/utils/common.utils';
+import { isEmpty } from 'src/app/utils/common.utils';
 import { of } from 'rxjs';
 
 @Injectable({
@@ -28,6 +28,7 @@ export class PostFacadeService {
    */
   getAllPost() {
     return this.store.select(selectAllPost).pipe(map((data: PostResponse[]) => {
+      if(data === null) return null; // Initial value is set to null to show loading states.
       if (isEmpty(data)) return [];
       return data.slice().reverse();
     }));
@@ -55,6 +56,7 @@ export class PostFacadeService {
 */
   getSearchPost() {
     return this.store.select(selectSeachPost).pipe(map((data: PostResponse[]) => {
+      if(data === null) return null; // Initial value is set to null to show loading states.
       if (isEmpty(data)) return [];
       return data.slice().reverse();
     }));

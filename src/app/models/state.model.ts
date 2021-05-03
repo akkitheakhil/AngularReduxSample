@@ -1,5 +1,5 @@
 export interface PostState {
- post: [];
- search: [];
+ post: any;
+ search: any;
 }
 

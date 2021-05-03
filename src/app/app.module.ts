@@ -12,6 +12,7 @@ import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { PostEffects } from './store/post.effects';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { IsEmptyPipe } from './utils/pipe/is-empty.pipe';
 
 const combainedReducer = {
   post: postReducer
@@ -20,7 +21,8 @@ const combainedReducer = {
 @NgModule({
   declarations: [
     AppComponent,
-    PostComponent
+    PostComponent,
+    IsEmptyPipe
   ],
   imports: [
     BrowserModule,
