@@ -13,9 +13,9 @@ export class PostComponent implements OnInit {
   getAllPost$ = this.postService.getAllPost();
   searchPost$ = this.postService.getSearchPost();
 
-  public username: string = '';
-  public comment: string = '';
-  public searchKeyword: string = '';
+  public username = '';
+  public comment = '';
+  public searchKeyword = '';
 
   constructor(private postService: PostFacadeService) { }
 
@@ -31,23 +31,23 @@ export class PostComponent implements OnInit {
     return !isEmpty(this.searchKeyword);
   }
 
-  /**
+/**
  * @description Save new post to API.
  *
  */
   save() {
-    if (isEmpty(this.username) && isEmpty(this.comment)) return;
+    if (isEmpty(this.username) && isEmpty(this.comment)) { return; }
     const data: PostDto = { name: this.username, comment: this.comment };
     this.postService.addNewPost(data);
   }
 
-  /**
+/**
  * @description search by keyword.
  * Search for the post or based on username in API
  *
  */
   search() {
-    if (isEmpty(this.searchKeyword)) return;
+    if (isEmpty(this.searchKeyword)) { return; }
     this.postService.searchPost(this.searchKeyword);
   }
 

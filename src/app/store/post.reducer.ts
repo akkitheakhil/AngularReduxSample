@@ -1,6 +1,6 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import { PostState } from '../models/state.model';
-import * as PostActions from '../store/post.actions'
+import * as PostActions from '../store/post.actions';
 
 export const postFeatureKey = 'post';
 

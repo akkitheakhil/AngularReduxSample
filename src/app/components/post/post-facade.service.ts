@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { PostState } from '../../models/state.model';
 import { selectAllPost, selectSeachPost } from '../../store/post.selectors';
-import * as PostActions from '../../store/post.actions'
+import * as PostActions from '../../store/post.actions';
 import { map } from 'rxjs/operators';
 import { PostDto, PostResponse } from '../../models/post.model';
 import { isEmpty } from 'src/app/utils/common.utils';
@@ -19,7 +19,7 @@ export class PostFacadeService {
  * @description Calls API to fetch all post data
  */
   loadAllPost() {
-    this.store.dispatch(PostActions.loadPosts())
+    this.store.dispatch(PostActions.loadPosts());
   }
 
   /**
@@ -28,8 +28,8 @@ export class PostFacadeService {
    */
   getAllPost() {
     return this.store.select(selectAllPost).pipe(map((data: PostResponse[]) => {
-      if(data === null) return null; // Initial value is set to null to show loading states.
-      if (isEmpty(data)) return [];
+      if (data === null) { return null; } // Initial value is set to null to show loading states.
+      if (isEmpty(data)) { return []; }
       return data.slice().reverse();
     }));
   }
@@ -56,8 +56,8 @@ export class PostFacadeService {
 */
   getSearchPost() {
     return this.store.select(selectSeachPost).pipe(map((data: PostResponse[]) => {
-      if(data === null) return null; // Initial value is set to null to show loading states.
-      if (isEmpty(data)) return [];
+      if (data === null) { return null; } // Initial value is set to null to show loading states.
+      if (isEmpty(data)) { return []; }
       return data.slice().reverse();
     }));
   }

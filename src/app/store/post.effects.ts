@@ -21,7 +21,7 @@ export class PostEffects {
         map(data =>
           PostActions.loadPostsSuccess({ data })),
         catchError(error => of(PostActions.loadPostsFailure({ error })))
-      )
+      );
     })
   ));
   //#endregion
@@ -34,12 +34,12 @@ export class PostEffects {
   savePost$ = createEffect((): any => this.actions$.pipe(
     ofType(PostActions.addPost),
     switchMap((data) => {
-      return this.postService.addNewPost(data?.data).pipe(map(data => PostActions.addPostsSuccess({ data })),
+      return this.postService.addNewPost(data?.data).pipe(map(response => PostActions.addPostsSuccess({ data: response })),
         catchError(error => of(PostActions.loadPostsFailure({ error })))).pipe(
           switchMap(() => [
             PostActions.loadPosts()
           ])
-        )
+        );
     }
     )
   ));
@@ -57,9 +57,9 @@ export class PostEffects {
       return this.postService.searchPost(data?.data).pipe(
         map(response => PostActions.searchPostsSuccess({ data: response })),
         catchError(error => of(PostActions.searchPostsFailure({ error })))
-      )
+      );
     })
-  ))
+  ));
   //#endregion
 
   constructor(private actions$: Actions, private postService: PostHttpService) { }

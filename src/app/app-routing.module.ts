@@ -4,7 +4,7 @@ import { PostComponent } from './components/post/post.component';
 
 const routes: Routes = [
   { path: '', component: PostComponent },
-  { path:"**", redirectTo: ''}
+  { path: '**', redirectTo: ''}
 ];
 
 @NgModule({

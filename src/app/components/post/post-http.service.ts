@@ -14,8 +14,6 @@ export class PostHttpService {
    *  @method Get
    *  @description This will fetch all the post from the api.
    *  @returns Array of object 'PostResponse'
-   *  @author Akhil
-   *  @email speaktoakhilp@gmail.com
    */
   getAllPost(): Observable<PostResponse[]> {
     return this.http.get<PostResponse[]>('http://localhost:3000/posts');
@@ -25,8 +23,6 @@ export class PostHttpService {
      *
    *  @description Post new object of 'post' to API.
    *  @param Accepts object of PostDto
-   *  @author Akhil
-   *  @email speaktoakhilp@gmail.com
    */
   addNewPost(post: PostDto) {
     return this.http.post<PostResponse[]>('http://localhost:3000/posts', post);
@@ -36,14 +32,9 @@ export class PostHttpService {
    *
  *  @description Search in API using the keyword
  *  @param Accepts object of type 'String'.
- *  @author Akhil
- *  @email speaktoakhilp@gmail.com
  */
   searchPost(keyword: string) {
     return this.http.get<PostResponse[]>(`http://localhost:3000/posts?q=${keyword}`);
   }
-
-
-
 
 }

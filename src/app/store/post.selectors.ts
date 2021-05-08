@@ -9,4 +9,4 @@ export const selectPostsFeature = createFeatureSelector<any, PostState>(postFeat
 export const selectAllPost = createSelector(selectPostsFeature, (state: PostState) => state?.post);
 
 // Select search posts
-export const selectSeachPost = createSelector(selectPostsFeature, (state:PostState) => state?.search);
+export const selectSeachPost = createSelector(selectPostsFeature, (state: PostState) => state?.search);

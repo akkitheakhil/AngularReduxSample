@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
 import { PostComponent } from './components/post/post.component';
-import { reducer as postReducer } from '../app/store/post.reducer'
+import { reducer as postReducer } from '../app/store/post.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
@@ -16,7 +16,7 @@ import { IsEmptyPipe } from './utils/pipe/is-empty.pipe';
 
 const combainedReducer = {
   post: postReducer
-}
+};
 
 @NgModule({
   declarations: [
