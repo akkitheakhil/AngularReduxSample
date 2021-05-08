@@ -33,8 +33,8 @@ export class PostEffects {
    */
   savePost$ = createEffect((): any => this.actions$.pipe(
     ofType(PostActions.addPost),
-    switchMap((data) => {
-      return this.postService.addNewPost(data?.data).pipe(map(response => PostActions.addPostsSuccess({ data: response })),
+    switchMap(({ data }) => {
+      return this.postService.addNewPost(data).pipe(map(response => PostActions.addPostsSuccess({ data: response })),
         catchError(error => of(PostActions.loadPostsFailure({ error })))).pipe(
           switchMap(() => [
             PostActions.loadPosts()
@@ -53,8 +53,8 @@ export class PostEffects {
     ofType(PostActions.searchPost),
     debounceTime(400),
     distinctUntilChanged(),
-    switchMap((data) => {
-      return this.postService.searchPost(data?.data).pipe(
+    switchMap(({ data }) => {
+      return this.postService.searchPost(data).pipe(
         map(response => PostActions.searchPostsSuccess({ data: response })),
         catchError(error => of(PostActions.searchPostsFailure({ error })))
       );
