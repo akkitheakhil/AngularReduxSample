@@ -4,14 +4,14 @@ import { PostDto, PostResponse } from '../models/post.model';
 //#region Load Post
 
 /**
- * Action for loading post from API
+ * @description Action for loading post from API
  */
 export const loadPosts = createAction(
   '[Post] Load Posts'
 );
 
 /**
- * Action for handling success from api for Load post
+ * @description Action for handling success from api for Load post
  */
 export const loadPostsSuccess = createAction(
   '[Post] Load Posts Success',
@@ -19,7 +19,7 @@ export const loadPostsSuccess = createAction(
 );
 
 /**
- * Action for handling failure from api for Load post
+ * @description Action for handling failure from api for Load post
  */
 export const loadPostsFailure = createAction(
   '[Post] Load Posts Failure',
@@ -28,11 +28,10 @@ export const loadPostsFailure = createAction(
 
 //#endregion
 
-
 //#region Add Post
 
 /**
- * Action for posting data to API to add new post
+ * @description Action for posting data to API to add new post
  */
 export const addPost = createAction(
   '[Post] Add Posts',
@@ -41,7 +40,7 @@ export const addPost = createAction(
 
 
 /**
- * Action for handling success from api for adding new post
+ * @description Action for handling success from api for adding new post
  */
 export const addPostsSuccess = createAction(
   '[Post] Add Posts Success',
@@ -49,7 +48,7 @@ export const addPostsSuccess = createAction(
 );
 
 /**
- * Action for handling success from api for adding new post
+ * @description Action for handling success from api for adding new post
  */
 export const addPostsFailure = createAction(
   '[Post] Add Posts Failure',
